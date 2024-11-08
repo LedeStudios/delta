@@ -49,6 +49,17 @@ public:
 	void Unload();
 
 private:
-	void LoadLevels(TArray<TSoftObjectPtr<UWorld>> InLevels);
+	UPROPERTY()
+	TArray<TSoftObjectPtr<UWorld>> LevelsToLoad;
+
+	int32 CurrentLoadIndex = 0;
+	
+private:
+	void LoadLevels(const TArray<TSoftObjectPtr<UWorld>>& InLevels);
+
+	void LoadNextLevel(int32 InIndex);
+
+	UFUNCTION()
+	void OnLoaded();
 	
 };

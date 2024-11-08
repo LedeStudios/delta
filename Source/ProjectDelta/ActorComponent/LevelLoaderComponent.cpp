@@ -63,15 +63,6 @@ void ULevelLoaderComponent::Load(TSoftObjectPtr<UWorld> InRoom, TSoftObjectPtr<U
 	LoadLevels(Levels);
 }
 
-void ULevelLoaderComponent::LoadLevels(TArray<TSoftObjectPtr<UWorld>> InLevels)
-{
-	for (const TSoftObjectPtr<UWorld> InLevel : InLevels)
-	{
-		LoadedLevel.Add(InLevel);
-		UGameplayStatics::LoadStreamLevelBySoftObjectPtr(this, InLevel, true, false, FLatentActionInfo());
-	}
-}
-
 void ULevelLoaderComponent::Unload()
 {
 	if (!LoadedLevel.IsEmpty())
@@ -83,5 +74,34 @@ void ULevelLoaderComponent::Unload()
 		}
 		LoadedLevel.Reset();
 	}
+}
+
+void ULevelLoaderComponent::LoadLevels(const TArray<TSoftObjectPtr<UWorld>>& InLevels)
+{
+	LevelsToLoad = InLevels;
+	LoadNextLevel(0);
+}
+
+void ULevelLoaderComponent::LoadNextLevel(const int32 InIndex)
+{
+	if (InIndex >= LevelsToLoad.Num())
+	{
+		return;
+	}
+
+	CurrentLoadIndex = InIndex;
+	
+	FLatentActionInfo LatentInfo;
+	LatentInfo.UUID = 0;
+	LatentInfo.Linkage = 0;
+	LatentInfo.CallbackTarget = this;
+	LatentInfo.ExecutionFunction = FName("OnLoaded");
+	UGameplayStatics::LoadStreamLevelBySoftObjectPtr(this, LevelsToLoad[InIndex], true, false, LatentInfo);
+}
+
+void ULevelLoaderComponent::OnLoaded()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Level loaded: %s"), *LevelsToLoad[CurrentLoadIndex].GetAssetName());
+	LoadNextLevel(++CurrentLoadIndex);
 }
 
