@@ -33,7 +33,7 @@ void AGameplayPlayerController::BeginPlay()
 		Subsystem->AddMappingContext(InputMappingContext, 0);
 	}
 
-	PlayerCharacter = CastChecked<AGameplayPlayerController>(GetCharacter());
+	PlayerCharacter = CastChecked<AGameplayPlayerCharacter>(GetCharacter());
 }
 
 void AGameplayPlayerController::Move(const FInputActionValue& Value)
