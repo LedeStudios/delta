@@ -12,13 +12,7 @@ ULevelLoaderComponent::ULevelLoaderComponent()
 
 void ULevelLoaderComponent::LoadDefault()
 {
-	if (Rooms.IsEmpty() || LivingRooms.IsEmpty() || Hallways.IsEmpty() || Stairways.IsEmpty() || Holes.IsEmpty())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Cannot load default levels."));
-		return;
-	}
-	
-	Load(Rooms[0], LivingRooms[0], Hallways[0], Stairways[0], Holes[0]);
+	LoadLevels(Defaults);
 }
 
 void ULevelLoaderComponent::LoadRandom()

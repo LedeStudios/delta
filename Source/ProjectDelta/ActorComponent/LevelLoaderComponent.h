@@ -17,6 +17,9 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="LevelLoader")
+	TArray<TSoftObjectPtr<UWorld>> Defaults;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="LevelLoader")
 	TArray<TSoftObjectPtr<UWorld>> Rooms;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="LevelLoader")
