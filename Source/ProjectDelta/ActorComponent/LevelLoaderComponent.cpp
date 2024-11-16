@@ -3,6 +3,8 @@
 
 #include "LevelLoaderComponent.h"
 
+#include "GameFramework/Character.h"
+#include "GameFramework/PlayerStart.h"
 #include "Kismet/GameplayStatics.h"
 
 ULevelLoaderComponent::ULevelLoaderComponent()
@@ -80,6 +82,17 @@ void ULevelLoaderComponent::LoadNextLevel(const int32 InIndex)
 {
 	if (InIndex >= LevelsToLoad.Num())
 	{
+		if (ACharacter* Character = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))
+		{
+			TArray<AActor*> PlayerStarts;
+			UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStarts);
+
+			if (PlayerStarts.Num() > 0)
+			{
+				Character->SetActorTransform(PlayerStarts[0]->GetActorTransform());
+				Character->GetController()->SetControlRotation(Character->GetActorRotation());
+			}
+		}
 		return;
 	}
 
