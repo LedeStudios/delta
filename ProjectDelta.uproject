@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{9F545B2C-486D-1FFC-CC2F-0BABE3EEAE7C}",
+	"EngineAssociation": "{8C7E0305-4E2B-075C-E5D5-8AAA22CBE648}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -17,6 +17,10 @@
 			"TargetAllowList": [
 				"Editor"
 			]
+		},
+		{
+			"Name": "ChaosVehiclesPlugin",
+			"Enabled": true
 		}
 	]
 }
