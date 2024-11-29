@@ -55,11 +55,11 @@ void AGameplayPlayerController::Move(const FInputActionValue& Value)
 void AGameplayPlayerController::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
-	const FVector2D LookAxisVector = Value.Get<FVector2D>();
+	FVector2D LookAxisVector = Value.Get<FVector2D>();
 	
-	// LookAxisVector.X = LookAxisVector.X / 100 * Settings->MouseX;
-	// LookAxisVector.Y = LookAxisVector.Y / 100 * Settings->MouseY;
-		
+	LookAxisVector.X = LookAxisVector.X * 2 * MouseX;
+	LookAxisVector.Y = LookAxisVector.Y * 2 * MouseY;
+	
 	// add yaw input to controller
 	PlayerCharacter->AddControllerYawInput(LookAxisVector.X);
 		
