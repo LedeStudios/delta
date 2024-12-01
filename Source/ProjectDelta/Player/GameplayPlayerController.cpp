@@ -6,6 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "GameplayPlayerCharacter.h"
+#include "Subsystem/SettingsSubsystem.h"
 
 AGameplayPlayerController::AGameplayPlayerController()
 {
@@ -56,9 +57,11 @@ void AGameplayPlayerController::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
+
+	const USettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<USettingsSubsystem>();
 	
-	LookAxisVector.X = LookAxisVector.X * 2 * MouseX;
-	LookAxisVector.Y = LookAxisVector.Y * 2 * MouseY;
+	LookAxisVector.X = LookAxisVector.X * 2 * Settings->MouseX;
+	LookAxisVector.Y = LookAxisVector.Y * 2 * Settings->MouseY;
 	
 	// add yaw input to controller
 	PlayerCharacter->AddControllerYawInput(LookAxisVector.X);

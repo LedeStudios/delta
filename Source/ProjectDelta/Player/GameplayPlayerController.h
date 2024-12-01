@@ -59,18 +59,5 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Input", meta=(UIMin=-180.f, UIMax=0.f))
 	float MinPitchAngle = -45.f;
-
-protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(UIMin=0.f, UIMax=1.f))
-	float MouseX = 0.5f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(UIMin=0.f, UIMax=1.f))
-	float MouseY = 0.5f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(UIMin=0.f, UIMax=1.f))
-	float MusicVolume = 0.5f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(UIMin=0.f, UIMax=1.f))
-	float EffectVolume = 0.5f;
 	
 };
