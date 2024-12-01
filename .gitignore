@@ -1,5 +1,6 @@
 # ignore assets for license
 Content/Assets/
+Content/Fab/
 Plugins/
 
 # jetbrain
