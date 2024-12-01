@@ -13,7 +13,9 @@ public class ProjectDelta : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput",
-			"ChaosVehicles"
+			"ChaosVehicles",
+			"PhysicsCore", "Slate", "SlateCore",
+			"Niagara", "NiagaraCore"
 		});
 	}
 }
