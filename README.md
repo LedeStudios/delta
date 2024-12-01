@@ -13,4 +13,4 @@ In this game, players can do nothing but keep walking—through an old studio ap
 Please be advised: the game contains psychological horror elements and scenes of graphic violence. Proceed with caution.
 
 ## Download
-The project can be downloaded here.
+The project can be downloaded [here](https://lede-studios.itch.io/apt).
