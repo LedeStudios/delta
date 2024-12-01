@@ -68,6 +68,9 @@ protected:
 	float MouseY = 0.5f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(UIMin=0.f, UIMax=1.f))
-	float Volume = 0.5f;
+	float MusicVolume = 0.5f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(UIMin=0.f, UIMax=1.f))
+	float EffectVolume = 0.5f;
 	
 };
